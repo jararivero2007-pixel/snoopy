@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peluche Snoopy | Tienda oficial</title>
+  <meta name="description" content="El peluche de Snoopy más abrazable. Elige su atuendo, su tamaño y llévatelo a casa.">
+  <meta name="theme-color" content="#FFF8E7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#producto">Saltar al producto</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#" class="logo" aria-label="Inicio">
+        <svg class="logo-house" viewBox="0 0 64 56" aria-hidden="true">
+          <path d="M6 26 L32 4 L58 26" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 24 V52 H52 V24" fill="var(--red)" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M26 52 V38 a6 6 0 0 1 12 0 V52" fill="var(--ink)"/>
+        </svg>
+        <span>La Caseta</span>
+      </a>
+      <nav class="main-nav" aria-label="Principal">
+        <a href="#producto">Peluche</a>
+        <a href="#quiz">¿Cuál eres?</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#faq">Ayuda</a>
+      </nav>
+      <button class="cart-btn" type="button" aria-controls="cart" aria-expanded="false">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h4l3 15h14l3-11H10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="26" r="2.4" fill="currentColor"/><circle cx="24" cy="26" r="2.4" fill="currentColor"/></svg>
+        <span class="sr-only">Carrito,</span>
+        <span class="cart-count" data-cart-count>0</span>
+        <span class="sr-only">artículos</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO (tira cómica) ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Edición especial · stock limitado</p>
+          <h1 id="hero-title">
+            <span class="line">Felicidad es</span>
+            <span class="line highlight">un peluche</span>
+            <span class="line">calentito.</span>
+          </h1>
+          <p class="lead">Suave como una siesta en el tejado de la caseta. Hecho para abrazar, regalar y no soltar nunca.</p>
+          <div class="hero-ctas">
+            <a href="#producto" class="btn btn-primary">Quiero el mío</a>
+            <a href="#quiz" class="btn btn-ghost">¿Cuál me pega?</a>
+          </div>
+          <ul class="trust">
+            <li>🚚 Envío gratis +35€</li>
+            <li>↩️ 30 días para devolver</li>
+            <li>✅ Producto con licencia oficial</li>
+          </ul>
+        </div>
+
+        <ol class="strip" aria-label="Tira cómica: un día con tu peluche">
+          <li class="panel panel-1">
+            <span class="balloon">¿Otro lunes?</span>
+            <span class="sfx sfx-sigh">suspiro…</span>
+          </li>
+          <li class="panel panel-2">
+            <span class="balloon balloon-right">¡Llegó un paquete!</span>
+            <span class="sfx sfx-knock">TOC TOC</span>
+          </li>
+          <li class="panel panel-3">
+            <span class="balloon">♥ ♥ ♥</span>
+            <span class="sfx sfx-hug">¡ABRAZO!</span>
+          </li>
+        </ol>
+      </div>
+      <svg class="grass" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 40 V22 Q20 8 40 22 T80 22 T120 22 T160 22 T200 22 T240 22 T280 22 T320 22 T360 22 T400 22 T440 22 T480 22 T520 22 T560 22 T600 22 T640 22 T680 22 T720 22 T760 22 T800 22 T840 22 T880 22 T920 22 T960 22 T1000 22 T1040 22 T1080 22 T1120 22 T1160 22 T1200 22 V40Z"/>
+      </svg>
+    </section>
+
+    <!-- ============ PRODUCTO ============ -->
+    <section id="producto" class="product" aria-labelledby="product-title">
+      <div class="wrap product-grid">
+
+        <!-- Galería -->
+        <div class="gallery">
+          <div class="stage" data-stage>
+            <button class="hug-target" type="button" data-hug aria-describedby="hug-hint">
+              <img data-main-img src="assets/img/clasico.jpg" alt="Peluche de Snoopy clásico, sentado" width="600" height="600">
+            </button>
+            <p id="hug-hint" class="hug-hint">Mantén pulsado para darle un abrazo</p>
+            <p class="hug-counter" aria-live="polite"><span data-hug-count>0</span> abrazos dados hoy</p>
+            <div class="hearts" aria-hidden="true" data-hearts></div>
+          </div>
+          <div class="thumbs" role="list" aria-label="Vistas">
+            <button type="button" role="listitem" class="thumb is-active" data-view="frente" aria-label="Vista frontal">Frente</button>
+            <button type="button" role="listitem" class="thumb" data-view="lado" aria-label="Vista lateral">Lado</button>
+            <button type="button" role="listitem" class="thumb" data-view="detalle" aria-label="Detalle del bordado">Detalle</button>
+            <button type="button" role="listitem" class="thumb" data-view="escala" aria-label="Tamaño comparado con una mano">Escala</button>
+          </div>
+        </div>
+
+        <!-- Panel de compra -->
+        <div class="buybox">
+          <p class="kicker">Peluche oficial</p>
+          <h2 id="product-title" data-product-name>Snoopy Clásico</h2>
+          <p class="rating"><span aria-hidden="true">★★★★★</span> <a href="#opiniones">4,9 · 1.284 opiniones</a></p>
+
+          <p class="price"><span data-price>29,90 €</span> <s class="old-price" data-old-price hidden></s></p>
+          <p class="variant-blurb" data-blurb>El de toda la vida: orejitas negras, collar rojo y cara de “hoy no me levanto”.</p>
+
+          <form class="buy-form" data-buy-form>
+            <fieldset class="option-group">
+              <legend>Atuendo: <strong data-variant-label>Clásico</strong></legend>
+              <div class="swatches">
+                <label class="swatch">
+                  <input type="radio" name="variant" value="clasico" checked>
+                  <span class="swatch-face" style="--sw: var(--red)">🦴</span>
+                  <span class="swatch-name">Clásico</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="variant" value="aviador">
+                  <span class="swatch-face" style="--sw: #8B5A2B">✈️</span>
+                  <span class="swatch-name">Aviador</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="variant" value="astronauta">
+                  <span class="swatch-face" style="--sw: var(--sky)">🚀</span>
+                  <span class="swatch-name">Astronauta</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="variant" value="navidad">
+                  <span class="swatch-face" style="--sw: var(--green)">🎄</span>
+                  <span class="swatch-name">Navidad</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="option-group">
+              <legend>Tamaño: <strong data-size-label>Mediano · 30 cm</strong></legend>
+              <div class="sizes">
+                <label class="size"><input type="radio" name="size" value="S"><span>S<small>20 cm</small></span></label>
+                <label class="size"><input type="radio" name="size" value="M" checked><span>M<small>30 cm</small></span></label>
+                <label class="size"><input type="radio" name="size" value="L"><span>L<small>45 cm</small></span></label>
+              </div>
+              <div class="size-ruler" aria-hidden="true">
+                <span class="ruler-plush" data-ruler></span>
+                <span class="ruler-hand">✋</span>
+              </div>
+            </fieldset>
+
+            <div class="qty-row">
+              <div class="qty" role="group" aria-label="Cantidad">
+                <button type="button" data-qty="-1" aria-label="Quitar uno">−</button>
+                <input type="number" name="qty" value="1" min="1" max="10" inputmode="numeric" aria-label="Cantidad">
+                <button type="button" data-qty="1" aria-label="Añadir uno">+</button>
+              </div>
+              <button class="btn btn-primary btn-add" type="submit" data-add>
+                Añadir al carrito
+              </button>
+            </div>
+
+            <label class="gift">
+              <input type="checkbox" name="gift">
+              <span>🎁 Envolver para regalo con tarjeta escrita a mano <em>(+3 €)</em></span>
+            </label>
+          </form>
+
+          <p class="stock" data-stock><span class="dot"></span> Quedan pocas unidades de este atuendo</p>
+
+          <ul class="perks">
+            <li><strong>Ultrasuave</strong> poliéster hipoalergénico</li>
+            <li><strong>Lavable</strong> a 30 °C en bolsa de red</li>
+            <li><strong>Seguro</strong> para +3 años (norma EN-71)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO LLEGA (tira en 4 viñetas) ============ -->
+    <section class="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title" class="section-title"><span>Así llega a tu casa</span></h2>
+        <ol class="how-strip">
+          <li class="how-panel reveal"><span class="how-num">1</span><span class="how-icon" aria-hidden="true">🛒</span><h3>Lo eliges</h3><p>Atuendo, tamaño y, si quieres, envoltorio de regalo.</p></li>
+          <li class="how-panel reveal"><span class="how-num">2</span><span class="how-icon" aria-hidden="true">📦</span><h3>Lo mimamos</h3><p>Sale en 24 h, en caja con forma de caseta (sí, de verdad).</p></li>
+          <li class="how-panel reveal"><span class="how-num">3</span><span class="how-icon" aria-hidden="true">🚚</span><h3>Vuela hacia ti</h3><p>48–72 h en península. Seguimiento en tiempo real.</p></li>
+          <li class="how-panel reveal"><span class="how-num">4</span><span class="how-icon" aria-hidden="true">🤗</span><h3>Abrazo</h3><p>No incluimos instrucciones. Sabrás qué hacer.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ QUIZ ============ -->
+    <section id="quiz" class="quiz" aria-labelledby="quiz-title">
+      <div class="wrap quiz-inner">
+        <h2 id="quiz-title" class="section-title"><span>¿Qué Snoopy va contigo?</span></h2>
+        <p class="quiz-sub">Tres preguntas, cero presión. Te recomendamos el atuendo perfecto.</p>
+
+        <div class="quiz-card" data-quiz>
+          <div class="quiz-progress" aria-hidden="true"><span data-quiz-bar></span></div>
+
+          <div class="quiz-step is-active" data-step="0">
+            <p class="quiz-q">Tu plan ideal de sábado es…</p>
+            <div class="quiz-options">
+              <button type="button" data-answer="clasico">Siesta épica 😴</button>
+              <button type="button" data-answer="aviador">Escapada improvisada 🗺️</button>
+              <button type="button" data-answer="astronauta">Documental del espacio 🔭</button>
+              <button type="button" data-answer="navidad">Chocolate y mantita ☕</button>
+            </div>
+          </div>
+          <div class="quiz-step" data-step="1">
+            <p class="quiz-q">¿Para quién es?</p>
+            <div class="quiz-options">
+              <button type="button" data-answer="clasico">Para mí, me lo merezco</button>
+              <button type="button" data-answer="aviador">Para alguien aventurero</button>
+              <button type="button" data-answer="astronauta">Para un peque curioso</button>
+              <button type="button" data-answer="navidad">Es un regalo de fiestas</button>
+            </div>
+          </div>
+          <div class="quiz-step" data-step="2">
+            <p class="quiz-q">Elige una onomatopeya</p>
+            <div class="quiz-options">
+              <button type="button" data-answer="clasico">¡ZZZ!</button>
+              <button type="button" data-answer="aviador">¡RATATATÁ!</button>
+              <button type="button" data-answer="astronauta">¡FIUUUM!</button>
+              <button type="button" data-answer="navidad">¡JO JO JO!</button>
+            </div>
+          </div>
+          <div class="quiz-step quiz-result" data-step="3" aria-live="polite">
+            <p class="quiz-q">Tu compañero ideal es…</p>
+            <p class="result-name" data-result-name></p>
+            <p class="result-text" data-result-text></p>
+            <div class="hero-ctas">
+              <button type="button" class="btn btn-primary" data-quiz-apply>Elegir este atuendo</button>
+              <button type="button" class="btn btn-ghost" data-quiz-reset>Repetir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OPINIONES ============ -->
+    <section id="opiniones" class="reviews" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <h2 id="reviews-title" class="section-title"><span>Lo que dicen por ahí</span></h2>
+        <div class="review-grid">
+          <figure class="review reveal">
+            <blockquote>“Lo compré para mi sobrina y ahora duerme conmigo. Lo siento, Lucía.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 de 5">★★★★★</span> Marta · Valencia</figcaption>
+          </figure>
+          <figure class="review review-tilt reveal">
+            <blockquote>“El aviador con su bufanda es una monada. Calidad top, costuras perfectas.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 de 5">★★★★★</span> Javier · Madrid</figcaption>
+          </figure>
+          <figure class="review reveal">
+            <blockquote>“Llegó en una caja con forma de caseta. Lloré un poquito.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 de 5">★★★★★</span> Ana · Sevilla</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-inner">
+        <h2 id="faq-title" class="section-title"><span>Preguntas frecuentes</span></h2>
+        <details>
+          <summary>¿Es un producto con licencia oficial?</summary>
+          <p>Sí. Todos nuestros peluches son producto licenciado y llevan su etiqueta de autenticidad cosida.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tarda el envío?</summary>
+          <p>Preparamos el pedido en 24 h laborables. La entrega tarda 48–72 h en península y 3–5 días en islas.</p>
+        </details>
+        <details>
+          <summary>¿Se puede lavar?</summary>
+          <p>Sí, a 30 °C en programa delicado y dentro de una bolsa de red. Secar al aire, nunca en secadora.</p>
+        </details>
+        <details>
+          <summary>¿Y si no le gusta a quien se lo regalo?</summary>
+          <p>Tienes 30 días para devolverlo sin dar explicaciones. Aunque, sinceramente, nos extrañaría.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 La Caseta · Tienda de peluches</p>
+      <p class="legal">PEANUTS y Snoopy son marcas registradas de sus respectivos titulares. Producto distribuido bajo licencia.</p>
+    </div>
+  </footer>
+
+  <!-- Barra de compra fija (móvil) -->
+  <div class="sticky-buy" data-sticky aria-hidden="true">
+    <span class="sticky-name" data-sticky-name>Snoopy Clásico · M</span>
+    <span class="sticky-price" data-sticky-price>29,90 €</span>
+    <button type="button" class="btn btn-primary btn-sm" data-sticky-add tabindex="-1">Añadir</button>
+  </div>
+
+  <!-- ============ CARRITO ============ -->
+  <div class="cart-backdrop" data-cart-backdrop hidden></div>
+  <aside id="cart" class="cart" aria-label="Carrito" aria-hidden="true" tabindex="-1">
+    <div class="cart-head">
+      <h2>Tu caseta</h2>
+      <button type="button" class="cart-close" data-cart-close aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="ship-meter">
+      <p data-ship-text>Te faltan 35,00 € para el envío gratis</p>
+      <div class="ship-track"><span data-ship-bar></span></div>
+    </div>
+    <ul class="cart-items" data-cart-items></ul>
+    <div class="cart-empty" data-cart-empty>
+      <p class="balloon">Aquí dentro hace eco…</p>
+      <p>Tu carrito está vacío.</p>
+    </div>
+    <div class="cart-foot">
+      <p class="cart-total"><span>Total</span> <strong data-cart-total>0,00 €</strong></p>
+      <button type="button" class="btn btn-primary btn-block" data-checkout>Finalizar compra</button>
+    </div>
+  </aside>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <!-- Marcador de posición hasta tener las fotos reales del producto -->
+  <rect x="40" y="40" width="520" height="520" rx="40" fill="#FFFFFF" stroke="#1B1B1B" stroke-width="6" stroke-dasharray="18 12"/>
+  <ellipse cx="300" cy="470" rx="170" ry="22" fill="#1B1B1B" opacity=".12"/>
+  <path d="M170 250 L300 150 L430 250" fill="none" stroke="#1B1B1B" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M195 240 V460 H405 V240" fill="#E03A2F" stroke="#1B1B1B" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M265 460 V375 a35 35 0 0 1 70 0 V460" fill="#1B1B1B"/>
+  <text x="300" y="118" text-anchor="middle" font-family="Patrick Hand, Comic Sans MS, sans-serif" font-size="40" fill="#1B1B1B">Foto del peluche aquí</text>
+</svg>
