@@ -10,10 +10,8 @@ body{background:#ddd;font-family:Inter,sans-serif}
 .rays{position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 50% 36%,rgba(255,255,255,.045) 0 6deg,transparent 6deg 12deg)}
 .glow{position:absolute;width:900px;height:900px;left:90px;top:120px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,216,.75),transparent 65%)}
 header{position:relative;display:flex;justify-content:space-between;align-items:center;padding:56px 70px 0}
-.logo{display:flex;align-items:center;gap:14px}
-.logo svg{width:52px;height:52px}
-.logo b{font-family:Inter;font-weight:900;font-size:44px;letter-spacing:1px;line-height:1}
-.logo small{display:block;font-weight:800;font-size:15px;letter-spacing:4px;margin-top:4px;color:var(--candy)}
+.logo{background:#fff;border-radius:22px;padding:16px 24px;box-shadow:0 8px 0 rgba(0,0,0,.25)}
+.logo img{display:block;height:96px}
 .badge{border:3px solid var(--candy);color:var(--candy);font-weight:800;font-size:20px;letter-spacing:3px;padding:12px 22px;border-radius:40px}
 .kicker{position:relative;text-align:center;margin-top:58px;font-weight:800;letter-spacing:8px;font-size:24px;color:var(--candy)}
 h1{position:relative;font-family:Anton;text-align:center;line-height:.9;text-transform:uppercase;margin-top:18px}
@@ -44,10 +42,7 @@ footer .hash{font-family:Anton;font-size:40px;letter-spacing:1px}
 <div class="poster">
   <div class="rays"></div><div class="glow"></div>
   <header>
-    <div class="logo">
-      <svg viewBox="0 0 52 52" fill="none" stroke="#fff" stroke-width="3"><circle cx="26" cy="26" r="23"/><ellipse cx="26" cy="26" rx="10" ry="23"/><path d="M3 26h46M7 14h38M7 38h38"/></svg>
-      <div><b>UWC</b><small>COSTA RICA</small></div>
-    </div>
+    <div class="logo"><img src="uwc-logo.png" alt="UWC Costa Rica"></div>
     <div class="badge">MOVEMBER 2026</div>
   </header>
 
