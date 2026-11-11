@@ -1,0 +1,295 @@
+<title>Carta Familia Latina</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: panel de edición a la izquierda, carta horizontal (3:2) a la derecha; en móvil se apilan. */
+:root{
+  --bg:#efe7dc; --panel:#fffaf3; --ink:#2b2420; --muted:#7a6a5d; --line:#dccfbf;
+  --paper:#fdf6ea; --paper-ink:#2f2722;
+  --c1:#1f8a7a; --c2:#e2557a; --c3:#f0a020; --c4:#2d5fa8;
+  --accent:#c2410c;
+  --f-display:"Yeseva One", Georgia, serif;
+  --f-body:"Nunito", system-ui, sans-serif;
+  --f-hand:"Caveat", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1c1814; --panel:#26201b; --ink:#f2e9de; --muted:#b4a594; --line:#3d342c; --accent:#f08a4b; color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#1c1814; --panel:#26201b; --ink:#f2e9de; --muted:#b4a594; --line:#3d342c; --accent:#f08a4b; color-scheme:dark;}
+
+/* Paletas de la carta (la carta siempre es papel claro, en ambos temas) */
+.card[data-pal="talavera"]{--c1:#1f6fb2; --c2:#e2557a; --c3:#f0a020; --c4:#1f8a7a;}
+.card[data-pal="cempasuchil"]{--c1:#e07b10; --c2:#b8326a; --c3:#f4b400; --c4:#3f7d3a;}
+.card[data-pal="caribe"]{--c1:#0f8b8d; --c2:#ef6f6c; --c3:#f6c445; --c4:#3a5a9b;}
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:15px; line-height:1.5}
+.wrap{max-width:1280px; margin:0 auto; padding-block:24px 48px;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));
+  display:grid; grid-template-columns:300px minmax(0,1fr); gap:24px; align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Panel ---------- */
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:18px; position:sticky; top:16px}
+@media (max-width:900px){.panel{position:static}}
+.panel h1{font-family:var(--f-display); font-weight:400; font-size:24px; margin:0; text-wrap:balance}
+.panel p.lead{margin:4px 0 0; color:var(--muted); font-size:14px}
+.field{display:flex; flex-direction:column; gap:6px}
+.field label,.label{font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+textarea,input[type=text]{font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:8px 10px; width:100%}
+textarea{resize:vertical}
+textarea:focus,input:focus,button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.hint{font-size:12px; color:var(--muted)}
+.pals{display:flex; gap:8px; flex-wrap:wrap}
+.pal{display:flex; align-items:center; gap:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:999px; padding:5px 10px 5px 6px; font:inherit; font-size:13px; cursor:pointer}
+.pal[aria-pressed="true"]{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+.pal i{display:inline-flex; gap:2px}
+.pal i b{width:10px; height:10px; border-radius:50%; display:block}
+.row{display:flex; gap:8px; flex-wrap:wrap}
+.btn{font:inherit; font-weight:700; font-size:14px; border-radius:8px; padding:8px 12px; cursor:pointer; border:1px solid var(--line); background:var(--bg); color:var(--ink)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.field label.toggle{display:flex; align-items:center; gap:8px; font-size:14px; text-transform:none; letter-spacing:0; font-weight:600; color:var(--ink)}
+[hidden]{display:none!important}
+
+/* ---------- Stage ---------- */
+.stage{display:flex; flex-direction:column; gap:12px; min-width:0}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.nav .who{font-weight:700}
+.nav .count{color:var(--muted); font-variant-numeric:tabular-nums}
+
+/* ---------- La carta ---------- */
+.card{position:relative; width:100%; aspect-ratio:3/2; background:var(--paper); color:var(--paper-ink);
+  border-radius:6px; overflow:hidden; container-type:inline-size;
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 18px 40px -18px rgba(60,35,10,.35)}
+.card::before{ /* textura suave de papel */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 60%, rgba(160,110,50,.10) 100%),
+    repeating-linear-gradient(0deg, rgba(120,80,30,.018) 0 2px, transparent 2px 4px);}
+.frame{position:absolute; inset:1.6cqw; border:.18cqw solid var(--c1); border-radius:.6cqw; pointer-events:none}
+.frame::after{content:""; position:absolute; inset:.5cqw; border:.09cqw solid var(--c2); border-radius:.4cqw; opacity:.6}
+
+/* Papel picado: banderitas con recorte */
+.picado{position:absolute; top:0; left:0; right:0; height:9cqw; display:flex; justify-content:center; gap:.6cqw; padding:0 6cqw}
+.picado::before{content:""; position:absolute; left:3cqw; right:3cqw; top:1.1cqw; height:.15cqw; background:var(--paper-ink); opacity:.35; border-radius:1px}
+.flag{width:5.4cqw; height:7cqw; margin-top:1.1cqw; flex:none; position:relative;
+  clip-path:polygon(0 0,100% 0,100% 82%,83% 100%,67% 82%,50% 100%,33% 82%,17% 100%,0 82%);
+  -webkit-mask:radial-gradient(circle at 50% 42%, transparent 0 .8cqw, #000 .85cqw);
+  mask:radial-gradient(circle at 50% 42%, transparent 0 .8cqw, #000 .85cqw);
+  opacity:.88; transform-origin:top center; animation:sway 4s ease-in-out infinite}
+.flag::after{content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 25% 22%, var(--paper) 0 .32cqw, transparent .36cqw),
+    radial-gradient(circle at 75% 22%, var(--paper) 0 .32cqw, transparent .36cqw),
+    radial-gradient(circle at 25% 66%, var(--paper) 0 .32cqw, transparent .36cqw),
+    radial-gradient(circle at 75% 66%, var(--paper) 0 .32cqw, transparent .36cqw);}
+.flag:nth-child(4n+1){background:var(--c1)} .flag:nth-child(4n+2){background:var(--c2); animation-delay:-1s}
+.flag:nth-child(4n+3){background:var(--c3); animation-delay:-2s} .flag:nth-child(4n+4){background:var(--c4); animation-delay:-3s}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){.flag,.name{animation:none!important}}
+
+.inner{position:absolute; inset:9cqw 5cqw 4cqw; display:grid; grid-template-rows:auto auto 1fr; gap:1.4cqw; text-align:center}
+.eyebrow{font-weight:800; font-size:1.25cqw; letter-spacing:.3em; text-transform:uppercase; color:var(--c1)}
+.title{font-family:var(--f-display); font-size:4.2cqw; line-height:1; margin:.3cqw 0 0}
+.title .a{color:var(--c1)} .title .b{color:var(--c2)}
+.sub{font-size:1.45cqw; line-height:1.4; max-width:62cqw; margin:.8cqw auto 0; color:var(--paper-ink); opacity:.85; text-wrap:balance}
+
+.namebox{justify-self:center; display:flex; align-items:center; gap:1.6cqw}
+.namebox .orn{display:flex; gap:.35cqw}
+.namebox .orn span{width:.7cqw; height:.7cqw; transform:rotate(45deg); display:block}
+.namebox .orn span:nth-child(1){background:var(--c1)} .namebox .orn span:nth-child(2){background:var(--c3)} .namebox .orn span:nth-child(3){background:var(--c2)}
+.name{font-family:var(--f-display); font-size:5.4cqw; line-height:1.1; padding:.6cqw 3cqw .9cqw; border-radius:3cqw;
+  background:linear-gradient(var(--paper),var(--paper)) padding-box, linear-gradient(90deg,var(--c1),var(--c3),var(--c2)) border-box;
+  border:.3cqw solid transparent; white-space:nowrap; max-width:70cqw; overflow:hidden; text-overflow:ellipsis;
+  animation:pop .45s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes pop{from{transform:scale(.85); opacity:0}to{transform:none; opacity:1}}
+
+/* Notas para escribir */
+.notes{display:grid; grid-template-columns:repeat(var(--cols,3),minmax(0,1fr)); gap:1.4cqw; min-height:0; text-align:left}
+.note{position:relative; background:#fffdf8; border-radius:.5cqw; padding:1cqw 1.2cqw .8cqw; display:flex; flex-direction:column; min-height:0;
+  border-top:.45cqw solid var(--c1); box-shadow:0 .2cqw .6cqw rgba(80,50,20,.10)}
+.note:nth-child(4n+2){border-top-color:var(--c2)} .note:nth-child(4n+3){border-top-color:var(--c3)} .note:nth-child(4n+4){border-top-color:var(--c4)}
+.note textarea{all:unset; flex:1; min-height:0; font-family:var(--f-hand); font-size:2.1cqw; line-height:2.6cqw; color:var(--paper-ink);
+  background:repeating-linear-gradient(transparent 0 calc(2.6cqw - 1px), rgba(120,90,60,.22) calc(2.6cqw - 1px) 2.6cqw); overflow:hidden; white-space:pre-wrap; word-break:break-word}
+.note textarea::placeholder{color:rgba(80,60,40,.38)}
+.note .sign{all:unset; font-family:var(--f-hand); font-weight:700; font-size:1.9cqw; text-align:right; color:var(--c1); border-top:1px dashed rgba(120,90,60,.3); padding-top:.3cqw; margin-top:.3cqw}
+.note:nth-child(4n+2) .sign{color:var(--c2)} .note:nth-child(4n+3) .sign{color:#a86a00} .note:nth-child(4n+4) .sign{color:var(--c4)}
+.note .sign::placeholder{color:rgba(80,60,40,.35)}
+.note .x{position:absolute; top:.3cqw; right:.4cqw; border:0; background:none; color:rgba(80,60,40,.45); font-size:1.6cqw; cursor:pointer; line-height:1}
+.card.clean .note .x{display:none}
+.card.clean .note textarea::placeholder,.card.clean .note .sign::placeholder{color:transparent}
+
+/* Exportar */
+.out{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:8px}
+.out img{border-radius:6px; border:1px solid var(--line)}
+</style>
+
+<div class="wrap">
+  <aside class="panel" aria-label="Editar plantilla">
+    <div>
+      <h1>Carta de ánimo</h1>
+      <p class="lead">Pon los nombres de los de primer año. Cada carta tiene notas para que la familia escriba sus mensajes.</p>
+    </div>
+
+    <div class="field">
+      <label for="names">Nombres (uno por línea)</label>
+      <textarea id="names" rows="5">Valentina
+Mateo
+Camila
+Santiago</textarea>
+      <span class="hint">Se genera una carta por nombre. Usa ← → para pasar entre ellas.</span>
+    </div>
+
+    <div class="field">
+      <label for="sub">Mensaje principal</label>
+      <textarea id="sub" rows="3">Primeros exámenes, grandes retos. No estás solo/a: tu Familia Latina confía en ti y en todo lo que eres capaz de lograr.</textarea>
+    </div>
+
+    <div class="field">
+      <span class="label">Colores</span>
+      <div class="pals" role="group" aria-label="Paleta">
+        <button class="pal" type="button" data-pal="talavera" aria-pressed="true"><i><b style="background:#1f6fb2"></b><b style="background:#e2557a"></b><b style="background:#f0a020"></b></i>Talavera</button>
+        <button class="pal" type="button" data-pal="cempasuchil" aria-pressed="false"><i><b style="background:#e07b10"></b><b style="background:#b8326a"></b><b style="background:#3f7d3a"></b></i>Cempasúchil</button>
+        <button class="pal" type="button" data-pal="caribe" aria-pressed="false"><i><b style="background:#0f8b8d"></b><b style="background:#ef6f6c"></b><b style="background:#f6c445"></b></i>Caribe</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label">Notas para mensajes</span>
+      <div class="row">
+        <button class="btn" type="button" id="addNote">+ Añadir nota</button>
+        <button class="btn" type="button" id="cols">Columnas: 3</button>
+      </div>
+      <label class="toggle"><input type="checkbox" id="clean"> Vista limpia (ocultar guías)</label>
+    </div>
+
+    <div class="row">
+      <button class="btn primary" type="button" id="exportBtn">Generar imagen</button>
+    </div>
+    <span class="hint">Los textos se guardan en este navegador. Para imprimir, genera la imagen y guárdala con clic derecho → “Guardar imagen”.</span>
+  </aside>
+
+  <main class="stage">
+    <div class="nav">
+      <button class="btn" type="button" id="prev" aria-label="Carta anterior">←</button>
+      <div><span class="who" id="who"></span> <span class="count" id="count"></span></div>
+      <button class="btn" type="button" id="next" aria-label="Carta siguiente">→</button>
+    </div>
+
+    <section class="card" id="card" data-pal="talavera" aria-label="Carta">
+      <div class="picado" id="picado"></div>
+      <div class="frame"></div>
+      <div class="inner">
+        <header>
+          <div class="eyebrow">Para ti, de tu familia</div>
+          <h2 class="title"><span class="a">Familia</span> <span class="b">Latina</span></h2>
+          <p class="sub" id="subOut"></p>
+        </header>
+        <div class="namebox">
+          <div class="orn"><span></span><span></span><span></span></div>
+          <div class="name" id="nameOut"></div>
+          <div class="orn"><span></span><span></span><span></span></div>
+        </div>
+        <div class="notes" id="notes"></div>
+      </div>
+    </section>
+
+    <div class="out" id="out" hidden>
+      <strong>Imagen lista</strong>
+      <span class="hint">Clic derecho (o mantén pulsado en el móvil) → Guardar imagen.</span>
+      <img id="outImg" alt="Carta exportada">
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const KEY = 'familia-latina-carta-v1';
+  let state = {names:null, sub:null, pal:'talavera', cols:3, idx:0, notes:{}};
+  try{ Object.assign(state, JSON.parse(localStorage.getItem(KEY)||'{}')); }catch(e){}
+  const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} };
+
+  const namesEl=$('#names'), subEl=$('#sub'), card=$('#card');
+  if(state.names!=null) namesEl.value=state.names;
+  if(state.sub!=null) subEl.value=state.sub;
+
+  // papel picado
+  const pic=$('#picado'); for(let i=0;i<14;i++){ const f=document.createElement('div'); f.className='flag'; pic.appendChild(f); }
+
+  const names = () => namesEl.value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const defaultNotes = () => [
+    {t:'', s:''},{t:'', s:''},{t:'', s:''}
+  ];
+
+  function render(){
+    const list=names(); if(!list.length) list.push('Nombre');
+    state.idx=Math.max(0,Math.min(state.idx,list.length-1));
+    const n=list[state.idx];
+    const nameOut=$('#nameOut'); nameOut.textContent=n;
+    nameOut.style.animation='none'; void nameOut.offsetWidth; nameOut.style.animation='';
+    $('#who').textContent='Carta para '+n; $('#count').textContent='· '+(state.idx+1)+' / '+list.length;
+    $('#subOut').textContent=subEl.value;
+    card.dataset.pal=state.pal;
+    document.querySelectorAll('.pal').forEach(b=>b.setAttribute('aria-pressed', b.dataset.pal===state.pal));
+    card.style.setProperty('--cols', state.cols);
+    $('#cols').textContent='Columnas: '+state.cols;
+    renderNotes(n);
+  }
+
+  function renderNotes(n){
+    if(!state.notes[n]) state.notes[n]=defaultNotes();
+    const wrap=$('#notes'); wrap.innerHTML='';
+    state.notes[n].forEach((note,i)=>{
+      const el=document.createElement('div'); el.className='note';
+      const ta=document.createElement('textarea'); ta.id='note-'+i; ta.placeholder='Escribe aquí tu mensaje…'; ta.value=note.t;
+      ta.setAttribute('aria-label','Mensaje '+(i+1));
+      ta.addEventListener('input',()=>{note.t=ta.value; save();});
+      const sg=document.createElement('input'); sg.type='text'; sg.className='sign'; sg.id='sign-'+i; sg.placeholder='— tu nombre'; sg.value=note.s;
+      sg.setAttribute('aria-label','Firma '+(i+1));
+      sg.addEventListener('input',()=>{note.s=sg.value; save();});
+      const x=document.createElement('button'); x.className='x'; x.type='button'; x.textContent='×'; x.setAttribute('aria-label','Quitar nota');
+      x.addEventListener('click',()=>{ state.notes[n].splice(i,1); save(); renderNotes(n); });
+      el.append(x,ta,sg); wrap.appendChild(el);
+    });
+  }
+
+  namesEl.addEventListener('input',()=>{state.names=namesEl.value; save(); render();});
+  subEl.addEventListener('input',()=>{state.sub=subEl.value; save(); $('#subOut').textContent=subEl.value;});
+  document.querySelectorAll('.pal').forEach(b=>b.addEventListener('click',()=>{state.pal=b.dataset.pal; save(); render();}));
+  $('#prev').addEventListener('click',()=>{const l=names().length||1; state.idx=(state.idx-1+l)%l; save(); render();});
+  $('#next').addEventListener('click',()=>{const l=names().length||1; state.idx=(state.idx+1)%l; save(); render();});
+  document.addEventListener('keydown',e=>{ if(/TEXTAREA|INPUT/.test(document.activeElement.tagName)) return;
+    if(e.key==='ArrowLeft') $('#prev').click(); if(e.key==='ArrowRight') $('#next').click(); });
+  $('#addNote').addEventListener('click',()=>{const n=$('#nameOut').textContent; if(state.notes[n].length<8){state.notes[n].push({t:'',s:''}); save(); renderNotes(n);}});
+  $('#cols').addEventListener('click',()=>{state.cols= state.cols>=4?2:state.cols+1; save(); render();});
+  $('#clean').addEventListener('change',e=>card.classList.toggle('clean',e.target.checked));
+
+  $('#exportBtn').addEventListener('click',async()=>{
+    if(!window.html2canvas) return;
+    const btn=$('#exportBtn'); btn.textContent='Generando…'; btn.disabled=true;
+    card.classList.add('clean');
+    // html2canvas no pinta textareas multilínea bien: los cambiamos por divs temporales
+    const swaps=[];
+    card.querySelectorAll('.note textarea').forEach(ta=>{
+      const d=document.createElement('div'); d.className='ta-clone'; d.textContent=ta.value;
+      const cs=getComputedStyle(ta);
+      Object.assign(d.style,{flex:'1',fontFamily:cs.fontFamily,fontSize:cs.fontSize,lineHeight:cs.lineHeight,whiteSpace:'pre-wrap',wordBreak:'break-word',background:cs.backgroundImage,overflow:'hidden',color:cs.color});
+      ta.hidden=true; ta.after(d); swaps.push([ta,d]);
+    });
+    card.querySelectorAll('.flag').forEach(f=>f.style.animation='none');
+    try{
+      const c=await html2canvas(card,{scale:2,backgroundColor:null,useCORS:true});
+      $('#outImg').src=c.toDataURL('image/png'); $('#out').hidden=false;
+      $('#out').scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(e){ console.error(e); }
+    swaps.forEach(([ta,d])=>{d.remove(); ta.hidden=false;});
+    card.querySelectorAll('.flag').forEach(f=>f.style.animation='');
+    if(!$('#clean').checked) card.classList.remove('clean');
+    btn.textContent='Generar imagen'; btn.disabled=false;
+  });
+
+  render();
+})();
+</script>
